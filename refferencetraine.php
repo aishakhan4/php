@@ -1,11 +1,9 @@
-<?php include("connection.php");?>
 <!DOCTYPE html>
 <html>
 <head>
   <title>DS</title>
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
    <!-- Latest compiled and minified CSS -->
-   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <!-- jQuery library -->
@@ -15,16 +13,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/js/style.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="assets/js/style.js"></script>
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="assets/style/style.css">
  </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
- <?php
- include 'base.php';
- ?>
+  <?php
+  include 'base.php';
+  ?>
   <div class="content-wrapper">
     <div class="container-fluid" style="margin-top: 30px;">
       <!-- Breadcrumbs-->
@@ -120,31 +118,12 @@ ORDER by id DESC";
         </div>
       </div>
       <!-- Area Chart Example-->
-
-
       
 
-      <?php 
- $status="";
- if(isset($_POST["btn1"]))
- {
- extract($_POST);
- $qry="insert into companydetail (compname, designation,cont_num, email, gotdetails, relationships, belongs_department)
- values('$name','$design','$contact','$email','$question','$relationship','$department')";
- $rs=executequery($qry);
- if($rs=="success")
- {
- $status="<h3>place Added succssfully</h3>";
- }
- else
- {
- $status="<h3>error to Added</h3>";
- }
- }
- ?>
-<div class="container-fluid mt--7">
-<div class="row">
 
+           
+      <div class="container-fluid mt--7">
+<div class="row">
 <div class="col">
   <div class="card shadow">
     <div class="card-header bg-transparent">
@@ -168,30 +147,30 @@ ORDER by id DESC";
       
             <div class="col-sm-6 form-group">
             <label for=" name">Name</label>
-            <input type="text" class="form-control" name="name" id="name-f" placeholder="  Name" required><br>
+            <input type="text" class="form-control" name="sname" id="name-f" placeholder="  Name" required><br>
           </div>
           <div class="col-sm-6 form-group">
             <label for="besignation">Designation</label>
-            <input type="text" class="form-control" name="design" id="name-l" placeholder=" Designation" required >
+            <input type="text" class="form-control" name="board" id="name-l" placeholder=" Designation" required >
           </div>
           <div class="col-sm-6 form-group">
             <label for="contact no.">contact no.</label>
-            <input type="phone" class="form-control" name="contact" id="name-l" placeholder=" Contact no." required >
+            <input type="phone" class="form-control" name="percent" id="name-l" placeholder=" Contact no." required >
           </div>
           <div class="col-sm-6 form-group">
              <label for="passing year">Email</label>
-            <input type="text" class="form-control" name="email" id="name-l" placeholder=" Email" required > 
+            <input type="text" class="form-control" name="spasssing" id="name-l" placeholder=" Email" required > 
           </div>
        
           <div class="col-sm-6 form-group">
              <label for="passing year">How Do You Knoe Him/Her</label>
-            <input type="text" class="form-control" name="question" id="name-l" placeholder=" How Do You Knoe Him/Her" required > 
+            <input type="text" class="form-control" name="spasssing" id="name-l" placeholder=" How Do You Knoe Him/Her" required > 
           </div>   <div class="col-sm-6 form-group">
              <label for="passing year">Relationship With Employee</label>
-            <input type="text" class="form-control" name="relationship" id="name-l" placeholder=" Reletionship with Employee" required > 
+            <input type="text" class="form-control" name="spasssing" id="name-l" placeholder=" Reletionship with Employee" required > 
           </div>   <div class="col-sm-6 form-group">
              <label for="passing year">Belongs To Department</label>
-            <input type="text" class="form-control" name="department" id="name-l" placeholder=" Department name" required > 
+            <input type="text" class="form-control" name="spasssing" id="name-l" placeholder=" Department name" required > 
           </div>
        
        
@@ -203,7 +182,7 @@ ORDER by id DESC";
       </div>
 
       <div class="col-sm-12 form-group mb-0">
-       <button class="btn btn-primary float-right" name="btn1">Submit</button>
+       <button class="btn btn-primary float-right">Submit</button>
      </div>
      
    </div>
@@ -212,10 +191,10 @@ ORDER by id DESC";
 </div>
 </div>
 </div>
-</div>
-  
-
-
+</div>       
+    
+         
+    </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
    <?php

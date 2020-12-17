@@ -4,8 +4,6 @@
 <head>
   <title>DS</title>
    <!-- Latest compiled and minified CSS -->
-   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <!-- jQuery library -->
@@ -15,35 +13,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/js/style.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="assets/js/style.js"></script>
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="assets/style/style.css">
  </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
- <?php
- include 'base.php';
- ?>
+
+  <?php 
+  include 'base.php';
+  ?>
   <div class="content-wrapper">
     <div class="container-fluid" style="margin-top: 30px;">
       <!-- Breadcrumbs-->
      
-        
-  
       <!-- Icon Cards-->
       <div class="row">
         <div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white bg-primary o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
-                
+               
               </div>
               <div class="mr-5">Last 7 days hired Employees</div>
               <?php
               $from_date= date("Y-m-d",strtotime("-7 days") ) ;
                $to_date=date("Y-m-d");
-              $qry="SELECT * FROM emppersonaldetail WHERE Join_date BETWEEN '" . $from_date . "' AND  '" . $to_date . "'
+              $qry="SELECT * FROM emppersonaldetail WHERE Join_date BETWEEN '" . $from_date . "' AND  '" . $to_date . "' 
 ORDER by id DESC";
                  $rs=readrecord($qry);
                  $row= mysqli_num_rows($rs);
@@ -120,105 +117,107 @@ ORDER by id DESC";
         </div>
       </div>
       <!-- Area Chart Example-->
-
-
-      
-
-      <?php 
- $status="";
- if(isset($_POST["btn1"]))
- {
- extract($_POST);
- $qry="insert into companydetail (compname, designation,cont_num, email, gotdetails, relationships, belongs_department)
- values('$name','$design','$contact','$email','$question','$relationship','$department')";
- $rs=executequery($qry);
- if($rs=="success")
- {
- $status="<h3>place Added succssfully</h3>";
- }
- else
- {
- $status="<h3>error to Added</h3>";
- }
- }
- ?>
-<div class="container-fluid mt--7">
-<div class="row">
-
-<div class="col">
-  <div class="card shadow">
-    <div class="card-header bg-transparent">
-<div >
-    
-      <h3 >Company Reference Details</h3>
-    </div>
-    <div class="card-body">
-     <div class="container">
-      <form name="myformcont" class="my-2" action="" method="POST">
-        <!-- <h2 class="text-center">LIC Form</h2> -->
-        <div class="row jumbotron">
-
-          <!-- <div class="col-sm-12 form-group" style="margin-top: -20px;">
-            <label for="client_id">Client_id :</label>
-            <input type="text" class="form-control" name="client_id" id="name-f" placeholder="Enter your Client_id." required>
-          </div> -->
-
-          <!--<div class="col-sm-6 form-group" style="margin-top: -20px;"> -->
-            <!--High school-->
-      
-            <div class="col-sm-6 form-group">
-            <label for=" name">Name</label>
-            <input type="text" class="form-control" name="name" id="name-f" placeholder="  Name" required><br>
-          </div>
-          <div class="col-sm-6 form-group">
-            <label for="besignation">Designation</label>
-            <input type="text" class="form-control" name="design" id="name-l" placeholder=" Designation" required >
-          </div>
-          <div class="col-sm-6 form-group">
-            <label for="contact no.">contact no.</label>
-            <input type="phone" class="form-control" name="contact" id="name-l" placeholder=" Contact no." required >
-          </div>
-          <div class="col-sm-6 form-group">
-             <label for="passing year">Email</label>
-            <input type="text" class="form-control" name="email" id="name-l" placeholder=" Email" required > 
-          </div>
-       
-          <div class="col-sm-6 form-group">
-             <label for="passing year">How Do You Knoe Him/Her</label>
-            <input type="text" class="form-control" name="question" id="name-l" placeholder=" How Do You Knoe Him/Her" required > 
-          </div>   <div class="col-sm-6 form-group">
-             <label for="passing year">Relationship With Employee</label>
-            <input type="text" class="form-control" name="relationship" id="name-l" placeholder=" Reletionship with Employee" required > 
-          </div>   <div class="col-sm-6 form-group">
-             <label for="passing year">Belongs To Department</label>
-            <input type="text" class="form-control" name="department" id="name-l" placeholder=" Department name" required > 
-          </div>
-       
-       
-          
-          
-      <div class="col-sm-12">
-        <input type="checkbox" class="form-check d-inline" id="chb" required><label for="chb" class="form-check-label">&nbsp;I accept all terms and conditions.
-        </label>
-      </div>
-
-      <div class="col-sm-12 form-group mb-0">
-       <button class="btn btn-primary float-right" name="btn1">Submit</button>
-     </div>
      
-   </div>
- </form>
-</div> 
-</div>
-</div>
-</div>
-</div>
+        
+
+
+
+       <div class="card mb-3">
+        <div class="card-header">
+          
+        <div class="card-body">
+          <div class="table-responsive">
+          <form action="showemp.php">
+            <table  class="table">
+             
+    <thead class="thead-light">
+    
+      <tr>
+      <th>ID</th>
+      <th>PROFILE</th>
+        <th>FULL Name</th>
+        <th>PHONE NO.</th>
+        <th>EMAIL</th>
+        <th>ADHAR NO.</th>
+        <th>PAN CARD</th>
+        <th>GENDER</th>
+        <th>DOB</th>
+        <th>BLOOD GROUP</th>
+        <th>FATHER Name</th>
+        <th>FATHER OCCUPATION</th>
+        <th>FATHER PHONE NO.</th>
+        <th>ADDRESS</th>
+        <th>STATE</th>
+        <th>CITY</th>
+        <th>PINCODE</th>
+        <th>JOIN DATE</th>
+
+      </tr>
+    </thead>
+    <?php
+$status="";
+$id=$_GET['id'];
+$qry="select * from emppersonaldetail where id='$id'";
+/*if(isset($_POST["btnsearch"]))
+{
+extract($_POST);
+$qry="select * from category where catname like '%$tsearch%' order by catid desc";
+}*/
+$rs=readrecord($qry);
+if(mysqli_num_rows($rs)>0)
+{
+?>
+<?php
+  while($row=mysqli_fetch_array($rs))
+  {
+    ?>
+
+    <tbody>
+    <tr>
+    <td><?php echo $row["id"]; ?></td>
+    <td><img src='<?php echo  $row["pfile"]; ?>' style="height:85px;"></td>
+    <td><?php echo $row["full_name"]; ?></td>
+    <td><?php echo $row["mobile_no."]; ?></td>
+    <td><?php echo $row["email"]; ?></td>
+    <td><?php echo $row["aadhar_number"]; ?></td>
+    <td><?php echo $row["pancard"]; ?></td>
+    <td><?php echo $row["gender"]; ?></td>
+    <td><?php echo $row["dob"]; ?></td>
+    <td><?php echo $row["blood_group"]; ?></td>
+    <td><?php echo $row["father_name"]; ?></td>
+    <td><?php echo $row["father_occupation"]; ?></td>
+    <td><?php echo $row["father_num"]; ?></td>
+    <td><?php echo $row["address"]; ?></td>
+    <td><?php echo $row["state"]; ?></td>
+    <td><?php echo $row["city"]; ?></td>
+    <td><?php echo $row["pincode"]; ?></td>
+    <td><?php echo $row["Join_date"]; ?></td>
+</tr>
+    
+        
+       
+    
+    
+      
+    </tbody>
+    <?php
+  }
+}
+   ?> 
+    <button type="submit" class=" btn-primary">BACK</button>
+        <!-- <button type="button" class=" btn-danger">Danger</button> -->    
+
+  </table>
+  </form>
   
-
-
+          </div>
+        </div>
+        
+      </div>
+    </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
-   <?php
+    <?php
    include 'footer.php';
    ?>
     <!-- Scroll to Top Button-->
@@ -247,3 +246,5 @@ ORDER by id DESC";
 </body>
 
 </html>
+
+<!-- 

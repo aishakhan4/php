@@ -15,8 +15,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/js/style.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="assets/js/style.js"></script>
+<script type="text/javascript" src="assets/js/skill.js"></script>
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="assets/style/style.css">
  </head>
@@ -120,100 +121,83 @@ ORDER by id DESC";
         </div>
       </div>
       <!-- Area Chart Example-->
-
-
       
+      <?php  
+$status="";
+if(isset($_POST["btn1"]))
+{
+ $number = count($_POST["skill"]);
+ echo "Skilll".$_POST['skill'][0]."<br>";
+echo "skill".$_POST['skill'][1]."<br>";
 
-      <?php 
- $status="";
- if(isset($_POST["btn1"]))
- {
- extract($_POST);
- $qry="insert into companydetail (compname, designation,cont_num, email, gotdetails, relationships, belongs_department)
- values('$name','$design','$contact','$email','$question','$relationship','$department')";
- $rs=executequery($qry);
- if($rs=="success")
- {
- $status="<h3>place Added succssfully</h3>";
- }
- else
- {
- $status="<h3>error to Added</h3>";
- }
- }
- ?>
-<div class="container-fluid mt--7">
-<div class="row">
-
-<div class="col">
-  <div class="card shadow">
-    <div class="card-header bg-transparent">
-<div >
-    
-      <h3 >Company Reference Details</h3>
-    </div>
-    <div class="card-body">
-     <div class="container">
-      <form name="myformcont" class="my-2" action="" method="POST">
-        <!-- <h2 class="text-center">LIC Form</h2> -->
-        <div class="row jumbotron">
-
-          <!-- <div class="col-sm-12 form-group" style="margin-top: -20px;">
-            <label for="client_id">Client_id :</label>
-            <input type="text" class="form-control" name="client_id" id="name-f" placeholder="Enter your Client_id." required>
-          </div> -->
-
-          <!--<div class="col-sm-6 form-group" style="margin-top: -20px;"> -->
-            <!--High school-->
+$skills="";
+$positions="";
+$experiences="";
+ if($number > 0)  
+ {  
+      for($i=0; $i<$number; $i++)  
+      {
+       if( $_POST["skill"][$i] != '' && $_POST["position"][$i] != '' && $_POST["experience"][$i] != '' ) 
+           {  
+             $skill=mysqli_real_escape_string( getconnect(), $_POST["skill"][$i]);
+             $position=mysqli_real_escape_string(getconnect(), $_POST["position"][$i]);
+             $experience=mysqli_real_escape_string(getconnect(), $_POST["experience"][$i]);
+            
+            $skills.=$skill.',';
+            $positions.=$position.',';
+            $experiences.=$experience.',';
+           }
       
-            <div class="col-sm-6 form-group">
-            <label for=" name">Name</label>
-            <input type="text" class="form-control" name="name" id="name-f" placeholder="  Name" required><br>
-          </div>
-          <div class="col-sm-6 form-group">
-            <label for="besignation">Designation</label>
-            <input type="text" class="form-control" name="design" id="name-l" placeholder=" Designation" required >
-          </div>
-          <div class="col-sm-6 form-group">
-            <label for="contact no.">contact no.</label>
-            <input type="phone" class="form-control" name="contact" id="name-l" placeholder=" Contact no." required >
-          </div>
-          <div class="col-sm-6 form-group">
-             <label for="passing year">Email</label>
-            <input type="text" class="form-control" name="email" id="name-l" placeholder=" Email" required > 
-          </div>
-       
-          <div class="col-sm-6 form-group">
-             <label for="passing year">How Do You Knoe Him/Her</label>
-            <input type="text" class="form-control" name="question" id="name-l" placeholder=" How Do You Knoe Him/Her" required > 
-          </div>   <div class="col-sm-6 form-group">
-             <label for="passing year">Relationship With Employee</label>
-            <input type="text" class="form-control" name="relationship" id="name-l" placeholder=" Reletionship with Employee" required > 
-          </div>   <div class="col-sm-6 form-group">
-             <label for="passing year">Belongs To Department</label>
-            <input type="text" class="form-control" name="department" id="name-l" placeholder=" Department name" required > 
-          </div>
-       
-       
-          
-          
-      <div class="col-sm-12">
-        <input type="checkbox" class="form-check d-inline" id="chb" required><label for="chb" class="form-check-label">&nbsp;I accept all terms and conditions.
-        </label>
-      </div>
+      }
 
-      <div class="col-sm-12 form-group mb-0">
-       <button class="btn btn-primary float-right" name="btn1">Submit</button>
-     </div>
-     
-   </div>
- </form>
-</div> 
-</div>
-</div>
-</div>
-</div>
-  
+    }
+           $sql = "INSERT INTO skill(skill,position,experience) VALUES('$skills','$positions','$experiences')";  
+                $rs=executequery($sql);
+           }
+           ?>
+
+ <div class="container">  
+                <br />  
+                <br />  
+                <h3 style="text-align:center"> Employee Skills  </h3>  
+                <div class="form-group">  
+                     <form name="add_name" id="add_name" method="POST" action="">  
+                          <div class="table-responsive">  
+                               <table class="table table-bordered" id="dynamic_field">  
+                                    <tr>  
+                                        
+                                        <td><input type="text" name="skill[]" placeholder="Skills" class="form-control name_list" /></td> 
+                                        <td> 
+        <select input type="text" class="form-control" name="position[]" id="address-1" placeholder=" Blood Group" required>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Expert">Expert</option></select>
+       </td> 
+                                        <td> <select input type="text" class="form-control" name="experience[]" id="address-1" placeholder=" Blood Group" required>
+        <option value="0-1 month">0-1 month</option>
+        <option value="0-2 month">0-2 month</option>
+        <option value="0-3 month">0-3 month</option>
+         <option value="0-4 month">0-4 month</option>
+          <option value="0-5 month">0-5 month</option>
+           <option value="0-6 month">0-6 month</option>
+            <option value="0-7 month">0-7 month</option>
+             <option value="0-8 month">0-8 month</option>
+              <option value="0-9 month">0-9 month</option>
+               <option value="0-10 month">0-10 month</option>
+                <option value="0-11 month">0-11 month</option>
+      </select></td>  
+                                        <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>  
+                                    </tr>  
+                               </table>  
+                               <input type="submit" name="btn1" id="submit" class="btn btn-info" value="Submit" />  
+                          </div>  
+                     </form>  
+                </div>  
+           </div>  
+
+
+
+
 
 
     <!-- /.container-fluid-->
